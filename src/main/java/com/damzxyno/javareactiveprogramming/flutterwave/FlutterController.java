@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,8 +16,11 @@ public class FlutterController {
 
     @GetMapping("/rest-template")
     public ResponseEntity<ApiResponsePayload> getBanksUsingRestTemplate(){
-        var x = flutterwaveServices.getBanksRestTemplate();
-        System.out.println(x.getBody().getData().size());
-        return x;
+        return flutterwaveServices.getBanksRestTemplate();
+    }
+
+    @GetMapping("/webclient")
+    public ResponseEntity<Mono<ApiResponsePayload>> getBanksUsingWebclient(){
+        return flutterwaveServices.getBanksWebClient();
     }
 }

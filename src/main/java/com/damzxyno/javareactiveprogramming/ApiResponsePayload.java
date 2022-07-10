@@ -1,10 +1,7 @@
 package com.damzxyno.javareactiveprogramming;
 
 import com.damzxyno.javareactiveprogramming.flutterwave.Bank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -12,6 +9,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class ApiResponsePayload{
     private String status;
     private String message;
