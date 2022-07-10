@@ -24,13 +24,7 @@ public class CountryService {
                 .bodyToFlux(Country.class)
                 .doOnNext(x -> System.out.println(Arrays.toString(x.getCapital())))
                 .filter(x -> x.getRegion().equalsIgnoreCase("Africa"))
-                .map(x -> CountryResponse.builder()
-                        .capital(x.getCapital() == null? "" : x.getCapital()[0])
-                        .name(x.getName().getOfficial())
-                        .population(String.format("%,2d",x.getPopulation()))
-                        .region(x.getRegion())
-                        .subregion(x.getSubregion())
-                        .build()
-                ).collectSortedList(Comparator.comparing(CountryResponse::getName));
+                .map(CountryResponse::convertFromCountry).collectSortedList(Comparator.comparing(CountryResponse::getName));
     }
 }
+
