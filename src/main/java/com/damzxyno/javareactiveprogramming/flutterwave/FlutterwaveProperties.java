@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
@@ -11,13 +12,9 @@ import org.springframework.stereotype.Component;
 @Setter
 @NoArgsConstructor
 @Configuration
+@ConfigurationProperties(prefix = "flutter")
 public class FlutterwaveProperties {
-    @Value("${flutter_public_key}")
     private String publicKey;
-
-    @Value("${flutter_secret_key}")
     private String secretKey;
-
-    @Value("${flutter_encryption_key}")
     private String encryption;
 }
